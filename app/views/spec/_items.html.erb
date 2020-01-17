@@ -1,0 +1,31 @@
+<% for item in current_user.owned_items -%>
+	<% if ((item.queue != []) && (item.tradeable != 0)) -%>
+	<div class="item">
+	<table border="1" cellspacing="5" cellpadding="5" class="item_table">
+		<tr>
+			<td class="item_image">
+				<% if item.libitem.small_image -%>
+					<%= image_tag(item.libitem.small_image) %>
+				<% else -%>
+					<p>No Image!</p>
+				<% end -%>
+			</td>
+			<td class="item_description">
+				<h4><%= item.libitem.title %></h4>
+				<p>
+					<%= item.description %>
+				</p>
+			</td>
+			<td class="item_options">
+				<ul>
+				<% for uid in item.queue -%>
+					<li><%= link_to "Send to #{User.find(uid).login}", :controller => :trade, :action => :lend, :id => item, :friend => User.find(uid).login %></li>
+				<% end -%>
+				
+				</ul>
+			</td>
+		</tr>
+	</table>
+	</div>
+	<% end -%>
+<% end -%>

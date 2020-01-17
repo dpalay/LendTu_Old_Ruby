@@ -1,0 +1,58 @@
+<% for item_id in current_user.my_requests -%>
+  <% item = Item.find(item_id) -%>
+  <% if item.trades.last%>
+    <% if item.trades.last.has_started == "false" -%>
+      <div class="item">
+      <table border="1" cellspacing="5" cellpadding="5" class="item_table">
+      	<tr>
+      		<td class="item_image">
+      			<% if item.libitem.small_image -%>
+      				<%= image_tag(item.libitem.small_image) %>
+      			<% else -%>
+      				<p>No Image!</p>
+      			<% end -%>
+      		</td>
+      		<td class="item_description">
+      			<h4><%= item.libitem.title %></h4>
+      			<p>
+      				<%= item.description %>
+      			</p>
+      		</td>
+      		<td class="item_options">
+      			<ul>
+      				<li>Cancel</li>
+      				<li>Remind</li>
+      			</ul>
+      		</td>
+      	</tr>
+      </table>
+      </div>
+    <% end -%>
+  <% else -%>
+      <div class="item">
+      <table border="1" cellspacing="5" cellpadding="5" class="item_table">
+      	<tr>
+      		<td class="item_image">
+      			<% if item.libitem.small_image -%>
+      				<%= image_tag(item.libitem.small_image) %>
+      			<% else -%>
+      				<p>No Image!</p>
+      			<% end -%>
+      		</td>
+      		<td class="item_description">
+      			<h4><%= item.libitem.title %></h4>
+      			<p>
+      				<%= item.description %>
+      			</p>
+      		</td>
+      		<td class="item_options">
+      			<ul>
+      				<li>Cancel</li>
+      				<li>Remind</li>      			
+      			</ul>
+      		</td>
+      	</tr>
+      </table>
+      </div>
+  <% end -%>
+<% end -%>

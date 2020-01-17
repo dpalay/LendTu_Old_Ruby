@@ -1,0 +1,26 @@
+<div id="friend_list">
+	<table border="0" cellspacing="5" cellpadding="5">
+		<tr>
+			<th></th>
+			<th>Friend's Login</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Owned Items</th>
+			<th># of your items they have</th>
+			<th># of their items YOU have</th>
+		</tr>
+  <% for friend in current_user.friends %>
+    <tr>
+    	<td><%= %></td>
+    	<td><%=h friend.login %></td>
+    	<td><%#h friend.spec.firstname %></td>
+    	<td><%#h friend.spec.lastname %></td>
+    	<td><%=h friend.email %></td>
+    	<td><%=h friend.owned_items.count %></td>
+    	<td><%#h friend.recieved_borrows.count %></td>
+    	<td><%#h friend..count%></td>
+    	</tr>
+  <% end %>
+  </table>
+</div>

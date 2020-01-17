@@ -1,0 +1,18 @@
+user.rb stuff
+
+
+	
+
+	
+	has_many :incoming_lends,		:through => :lends, :conditions => "status = 'incoming'", :source => :item
+	
+	
+	
+	has_many :outgoing_borrows,	:through => :borrows, :conditions => "status = 'outgoing'", :source => :item
+	
+	
+	
+	
+	has_many :returned_lends,		:through => :lends, :conditions => "status = 'returned'", :source => :item
+	has_many :returned_borrows,	:through => :borrows, :conditions => "status = 'returned'", :source => :item
+

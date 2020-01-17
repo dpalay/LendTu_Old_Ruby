@@ -1,0 +1,30 @@
+<% for item in (current_user.pending_lends + current_user.pending_givebacks) -%>
+<div class="item">
+<table border="1" cellspacing="5" cellpadding="5" class="item_table">
+	<tr>
+		<td class="item_image">
+			<% if item.libitem.small_image -%>
+				<%= image_tag(item.libitem.small_image) %>
+			<% else -%>
+				<p>No Image!</p>
+			<% end -%>
+		</td>
+		<td class="item_description">
+			<h4><%= item.libitem.title %></h4>
+			<p>
+				<%= item.description %>
+			</p>
+		</td>
+		<td class="item_options">
+			<ul>
+				<% if item.owner == current_user -%>
+				<li><%= link_to "Send", :controller => :trade, :action => :lend, :id => item%></li>
+				<% else -%>
+				<li><%= link_to "Send", :controller => :trade, :action => :lend, :id => item, :friend => item.owner.login %></li>
+				<% end -%>
+			</ul>
+		</td>
+	</tr>
+</table>
+</div>
+<% end  -%>

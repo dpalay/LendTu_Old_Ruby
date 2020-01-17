@@ -1,0 +1,23 @@
+<div class="item">
+	<div class="item_image">
+		<%# item.get("mediumimage/url")%>
+		<%= image_tag "#{item.get("mediumimage/url")}" %>
+	</div>
+	<div class="item_info">
+		<p>Title: <%= item.get("title")%>
+			<br />
+			ASIN: <%= item.get("asin")%>
+			<br	/>
+			Author: <%= item.get("author")%>
+			<br />
+			Category: <%= item.get("productgroup")%>
+			</p>
+	</div>
+	<div class="item_options">    	
+	    <!-- TODO:  Add this!-->
+	    <%= link_to "Add this!", {:controller => :items}, :method => :post%>
+	    <!-- TODO: Find friends with this! -->
+	    <%=link_to "Find friends with this!", {:controller => :asearch, :action => :search} %>
+	</div>
+</div>
+	<hr/>

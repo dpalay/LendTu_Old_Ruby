@@ -1,0 +1,224 @@
+body{
+	background: lightgrey;
+}
+
+#user_bar{
+	text-align: right;
+	float: right;
+}
+
+#logo{
+	background: CadetBlue none repeat scroll 0% 0%; 
+	height: 80px;
+	-moz-background-origin: padding; 
+	-moz-background-inline-policy: continuous; 
+	-moz-background-clip: border; 
+	width: 80%;
+	vertical-align: middle;
+	text-align: center;
+	display: table-cell;
+}
+
+/* ---------------------- flash[] ------------------------ */
+#warnings{
+	border: medium solid red;
+}
+/* ---------------------- END flash[] ---------------------- */
+
+
+/* ---------------------- menu_ nav ---------------------- */
+#menu_container{
+	position:relative;
+	height:56px;
+	color:#E0E0E0;
+	background:#143D55;
+	width:100%;
+	font-family:Helvetica,Arial,Verdana,sans-serif;
+	float: left;
+	margin-bottom: 20px;
+	}
+
+#menu_nav{
+	position:relative;
+	height:33px;
+	font-size:12px;
+	text-transform:uppercase;
+	font-weight:bold;
+	background:#fff url(menu_bg.gif) repeat-x bottom left;
+	padding:0 0 0 20px;
+	}
+
+#menu_nav ul{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	width:auto;
+	float:left;
+	}
+
+#menu_nav ul li{
+	display:block;
+	float:left;
+	margin:0 1px;
+	}
+
+#menu_nav ul li a{
+	display:block;
+	float:left;
+	color:#EAF3F8;
+	text-decoration:none;
+	padding:0 0 0 20px;
+	height:33px;
+	}
+
+#menu_nav ul li a span{
+	padding:12px 20px 0 0;
+	height:21px;
+	float:left;
+	}
+
+#menu_nav ul li a:hover{
+	color:#fff;
+	background:transparent url(menu_bg-OVER.gif) repeat-x bottom left;
+	}
+
+#menu_nav ul li a:hover span{
+	display:block;
+	width:auto;
+	cursor:pointer;
+	}
+
+#menu_nav ul li a.current,#menu_nav ul li a.current:hover{
+	color:#fff;
+	background:#1D6893 url(menu_left-ON.gif) no-repeat top left;
+	line-height:275%;
+	}
+
+#menu_nav ul li a.current span{
+	display:block;
+	padding:0 20px 0 0;
+	width:auto;
+	background:#1D6893 url(menu_right-ON.gif) no-repeat top right;
+	height:33px;
+	}
+/* ---------------------- END menu_ nav ---------------------- */
+
+
+/* ----------------------  Application.html.erb relevant material---------------------- */
+#main_content{
+	width: 100%;
+	display: block;
+}
+/* ---------------------- END Application.html.erb relevant material---------------------- */
+
+/* ----------------------  FAQ relevant material---------------------- */
+.q_set{
+	margin-bottom: 3%;
+}
+
+.q_set .question{
+	font-size: large;
+	font-weight: bold;
+}
+
+.q_set .answer{
+	margin-left: 3%;
+}
+
+/* ---------------------- END FAQ relevant material---------------------- */
+
+
+/* ---------------------- Main Page relevant material---------------------- */
+#main_content #Items {
+	margin-left: 6%;
+	float: left;
+	width: 45%;
+}
+
+#main_content #Friendships{
+	float: right;
+	width: 45%;
+}
+
+/* ---------------------- END Main Page relevant material---------------------- */
+
+
+/* ---------------------- Amazon Search Page relevant material---------------------- */
+#search_by_details
+{
+	float: left;
+	width: 40%;
+}
+
+#search_by_asin
+{
+	float: right;
+	width: 40%;
+}
+/* ---------------------- Amazon Search Page relevant material---------------------- */
+
+/* ---------------------- Search Results Page relevant material---------------------- */
+#Results
+{
+	width: 100%;
+}
+#Amazon{
+	float: left;
+	width: 50%;
+}
+
+#Other{
+	float: right;
+	width: 50%;
+}
+/* ---------------------- END Search Results Page relevant material---------------------- */
+.item{
+	margin-bottom: 10px;
+}
+
+
+.item_image{
+	float: left;
+}
+
+.item_description{
+	width: 55%;
+	border: none;
+}
+
+.item_options{
+	width: 35%;
+}
+
+.item_options ul li{
+	list-style: none;
+	margin-left: -30%;
+	text-align: right;
+}
+
+
+.priority .item{
+	border: medium solid red;
+}
+
+#debug{
+	display: inline-block;
+}
+
+
+/* ---------------------- Friends Page relevant material---------------------- */
+#friend_list{
+	float:left;
+}
+/* ---------------------- END Friends Page relevant material---------------------- */
+
+/* ---------------------- New Session Page relevant material---------------------- */
+
+#sign_up_link{
+	display: block;
+	width: 60px;
+	margin-right: 4%;
+	float: left;
+	
+}
+/* ---------------------- END New Session Page relevant material---------------------- */

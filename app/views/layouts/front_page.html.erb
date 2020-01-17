@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  	<meta name="author" content="David Palay" />
+  	<meta name="description" content="Lendtu, the webpage for sharing with friends."/>
+  	<meta name="keywords" content="lendtu, lendto, lend, borrow, share, library, personal library"/>
+  		
+ 
+		<title>LendTu - <%=@title%></title>
+		
+		<!-- **** layout stylesheet **** -->
+  	<%= stylesheet_link_tag 'index'%>
+  	<!-- **** color scheme stylesheet **** -->
+  	<%# stylesheet_link_tag 'colour'%>
+  	<!-- Java scripts -->
+  	<%= javascript_include_tag :all%>
+  	<%= yield(:head) %>
+	</head>
+	<body>
+		<div id="user_bar">
+		<%= render(:partial => "users/user_bar")%>
+		</div>
+		<div id="main_content">
+			
+			<%= yield  %>	
+		</div>
+		
+		
+	</body>
+</html>

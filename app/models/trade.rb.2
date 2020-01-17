@@ -1,0 +1,103 @@
+class Trade < ActiveRecord::Base
+	belongs_to :lender, :class_name => "User"
+	belongs_to :borrower, :class_name => "User"
+	belongs_to :item
+
+	validates_presence_of :lender_id, :borrower_id
+
+	def after_save
+		self.item.save!
+	end
+
+	#Returns true if there is a trade already in progress
+	def self.exists?(lender, borrower, item)
+		not find_by_lender_id_and_borrower_id_and_item_id_and_completed(lender, borrower, item, false).nil?
+	end
+	
+	def self.get_trade(lender, borrower, item)
+		find_all_by_lender_id_and_borrower_id_and_item_id_and_completed(lender, borrower, item, false).last
+	end
+
+#	def self.request(lender, borrower, item)
+#		t = Trade.get_trade(lender, borrower, item)
+#		unless not t.nil?
+#			if t.completed
+#				#Make sure that we can lend this item out!
+#				if (Friendship.friends?(item.owner, borrower) && Friendship.friends?(lender, borrower))			
+#					transaction do
+#							create!({:item => item, :lender => lender, :borrower => borrower, :status => "pending"})
+#					end
+#				end
+#			else 
+#				item.queue = item.queue.concat([borrower.id])
+#			end
+#		else
+#			transaction do
+#				if t.location == "out"
+#					t.status = "pending"
+#				end
+#				t.save!	
+#			end
+#		end
+#	end
+
+	def self.request(lender, borrower, item)
+		t = Trade.get_trade(lender, borrower, item)
+		if t.nil?
+			if (Friendship.friends?(item.owner, borrower) && Friendship.friends?(lender, borrower))			
+				transaction do
+					unless item.queue.include?(borrower.id)  	#if they have not already requested it once
+						item.queue << borrower.id  							#add the borrower to the queue
+					end
+					create!({:item => item, :lender => lender, :borrower => borrower, :status => "pending"})
+				end
+			end
+		else
+			transaction do
+				if t.location == "out"
+					t.status = "pending"
+				end
+				t.save!	
+			end
+		end
+	end
+	
+	def self.lend(lender, borrower, item)
+		transaction do
+			if Trade.exists?(lender, borrower, item)
+				tr = Trade.get_trade(lender, borrower, item)
+				if ((tr.status == "pending") && (tr.location == "in"))
+					tr.status = "outgoing"
+					tr.location = "out"
+				elsif((tr.status == "pending") && (tr.location == "out"))
+					tr.status = "incoming"
+				end
+				tr.save!
+			else
+				self.request(lender, borower, item)
+				self.lend(lender, borrower, item)
+			end	
+		end
+	end
+	
+	def self.recieve(lender, borrower, item)
+		transaction do
+			if Trade.exists?(lender, borrower, item)
+				tr = Trade.get_trade(lender, borrower, item)
+				if tr.status == "outgoing"
+					tr.status = "recieved"
+					tr.has_started = true
+				elsif tr.status == "incoming"
+					tr.status = "returned"
+					tr.completed = true
+					tr.location = "in"
+				end
+				tr.save!
+			end	
+		end
+	end
+	
+	
+		
+
+end

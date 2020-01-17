@@ -1,0 +1,46 @@
+body{
+	background-color: #DEDEDE;
+}
+
+#user_bar{
+	float: right;
+}
+
+#title_bar{
+	margin-left: 20%;
+}
+
+body h4{
+	margin-left: 40px;
+	margin-top: -25px;	
+}
+
+#main_section{
+	margin-left: 3%;
+	margin-right: 3%;
+}
+
+.about {
+	margin-bottom: 30px;
+	background-color: #CECECE;
+}
+
+.about legend{
+	border: thin solid;
+	padding: 4px;
+	background-color: #A8A8A8;
+}
+
+#what_lendtu_is{
+float: left;	
+width: 40%;
+margin-right: 4%;
+}
+
+#what_lendtu_isnt{
+	width: 40%;
+}
+
+#where_can_i_learn_more{
+	width: 40%;
+}

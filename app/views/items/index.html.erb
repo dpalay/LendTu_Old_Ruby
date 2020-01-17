@@ -1,0 +1,32 @@
+<h1>Listing items</h1>
+
+<table>
+  <tr>
+    <th>Owner</th>
+    <th>Current user</th>
+    <th>Image</th>
+    <th>Title</th>
+    <th>Details</th>
+  </tr>
+
+<% @owned_items.each do |item| %>
+  <tr>
+    <td><%=h item.owner.login %></td>
+    <td><%=h item.current_user.login %></td>
+    <td><% if item.libitem.small_image -%>
+					<%= image_tag(item.libitem.small_image) %>
+				<% else -%>
+					<p>No Image!</p>
+				<% end -%></td>
+    <td><%=h item.libitem.title %></td>
+    <td><%=h item.description %></td>
+    <td><%= link_to 'Show', item %></td>
+    <td><%= link_to 'Edit', edit_item_path(item) %></td>
+    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New item', new_item_path %>

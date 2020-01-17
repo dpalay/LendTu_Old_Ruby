@@ -1,0 +1,26 @@
+<% for item in current_user.recieved_lends -%>
+<div class="item">
+<table border="1" cellspacing="5" cellpadding="5" class="item_table">
+	<tr>
+		<td class="item_image">
+			<% if item.libitem.small_image -%>
+				<%= image_tag(item.libitem.small_image) %>
+			<% else -%>
+				<p>No Image!</p>
+			<% end -%>
+		</td>
+		<td class="item_description">
+			<h4><%= item.libitem.title %></h4>
+			<p>
+				<%= item.description %>
+			</p>
+		</td>
+		<td class="item_options">
+			<ul>
+				<li><%= link_to "Request Back", :controller => :trade, :action => :recall, :id => item %></li>
+			</ul>
+		</td>
+	</tr>
+</table>
+</div>
+<% end  -%>

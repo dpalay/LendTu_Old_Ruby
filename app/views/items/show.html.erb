@@ -1,0 +1,23 @@
+<p>
+  <b>Owner:</b>
+  <%=h @item.owner_id %>
+</p>
+
+<p>
+  <b>Current user:</b>
+  <%=h @item.current_user_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @item.libitem.title %>
+</p>
+
+<p>
+  <b>Details:</b>
+  <%=h @item.libitem.details %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

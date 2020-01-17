@@ -1,0 +1,10 @@
+<h1><%= @title %></h1>
+<% form_for @user do |f| -%>
+	<fieldset id="user_profile_settings" class="">
+		<legend>User Profile &amp; Settings</legend>
+		f.
+  	<%= f.submit "Update", :disable_with => 'Updating...' %>		
+		
+	</fieldset>
+
+<% end -%>

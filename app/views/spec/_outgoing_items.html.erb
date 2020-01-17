@@ -1,0 +1,37 @@
+<% for item in (current_user.outgoing_lends + current_user.returning_borrows) -%>
+<% if current_user.returning_borrows.include?(item) -%>
+	<span class="priority">	
+<% else -%>
+	<span class="normal">
+<% end -%>
+<div class="item">
+<table border="1" cellspacing="5" cellpadding="5" class="item_table">
+	<tr>
+		<td class="item_image">
+				<% if item.libitem.small_image -%>
+					<%= image_tag(item.libitem.small_image) %>
+				<% else -%>
+					<p>No Image!</p>
+			<% end -%>
+		</td>
+		<td class="item_description">
+			<h4><%= item.libitem.title %></h4>
+			<p>
+				<%= item.description %>
+			</p>
+		</td>
+		<td class="item_options">
+			<ul>
+				<% if current_user.outgoing_lends.include?(item) -%>
+					<li>Need to give to <%= link_to item.trades.last.borrower.login, :controller => :spec, :action => :show, :id => item.trades.last.borrower.login %>!</li>
+				<% else -%>
+					<li>Need to give to <%= link_to item.owner.login, :controller => :spec, :action => :show, :id => item.owner.login %>!</li>
+				<% end -%>
+			
+			</ul>
+		</td>
+	</tr>
+</table>
+</div>
+</span>	
+<% end  -%>

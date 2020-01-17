@@ -1,0 +1,19 @@
+Hi there <%# @user.spec.first_name %>!  
+I'll be up front with you, this is an auto-generated email, but I don't want that to stop you from understanding how glad I am that you've decided to join up with Lendtu!  We're constantly working on making Lendtu a more effictive means of maintaining your libraries, and we appreciate you deciding to give Lendtu a chance.  If you ever have a problem, please feel free to let us know!  Of course, since we don't charge you for Lendtu, you can't expect a refund, but we'll still try to help you out as much as we can!
+
+Anyways, your account has been created.  Here are the details for you.
+
+  Username: <%=h @user.login %>
+  Password: <%=h @user.password %>
+
+A note about passwords:  
+We do NOT store your cleartext password on our servers.  This copy of your password is the only one we'll be able to send to you.  What you do with it at this point is up to you.  
+
+Now that your account is created, you've got to go to the following link to activate it:
+  <%=h @url %>
+
+Once you activate, you'll be able to start using Lendtu!
+Thanks again for joining us,
+
+Dave Palay
+Creater of Lendtu

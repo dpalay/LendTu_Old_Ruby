@@ -1,0 +1,30 @@
+<% javascript 'dynamic_search_form'  %>
+<%= show_flash %>
+<div id="search_by_details">
+<h2>Detailed Amazon Search</h2>
+<% form_for 'asearch', :url => {:controller => 'asearch', :action => 'results'} do |f| -%>
+	<%= hidden_field_tag "attribute", "details", :id => nil %>
+	<%= f.error_messages %>
+	<div class="form_row">
+		<p>
+			<%= f.label :category %>
+			<%= select_tag "category", "#{options_for_select(@keys, selected = 'Blended')}" %>
+		</p>
+	</div>
+	<div id="search_terms">
+		<%= render :partial => "terms", :locals => {:f => f} %>
+	</div>
+	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
+<% end -%>
+</div>
+
+<div id="search_by_asin">
+	<h2>Search By ISBN / UPC / ASIN</h2>
+	<% form_for 'asearch', :url => {:controller => "asearch", :action => "results"} do |f| -%>
+	<%= hidden_field_tag "attribute", "asin", :id => nil %>
+	  <%= f.error_messages %>
+	  <label for="asin">Enter the ISBN, UPC, or ASIN:</label>
+	  <%= f.text_field :asin %>
+	  <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+	<% end -%>
+</div>

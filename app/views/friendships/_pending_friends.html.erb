@@ -1,0 +1,6 @@
+<% for friend in @user.pending_friends -%>
+<div class="friend_line">
+<%= link_to "#{friend.login}", :controller => "spec", :action => "show", :id => friend%>
+<%= link_to "Cancel Request!", :controller => :friendships, :action => :cancel, :id => friend.login%>
+</div>
+<% end -%>

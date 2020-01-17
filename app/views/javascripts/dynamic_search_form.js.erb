@@ -1,0 +1,45 @@
+function searchTypeSelected(){
+	cat = $('category').value;
+	// Hide and clear all the terms
+	<% for term in SEARCHTERMS -%>
+		<% unless term == "Keywords" -%>
+			$("<%= term.downcase %>").hide();
+		  $("<%= term.downcase %>").descendants()[1].value = null;
+	  <% end -%>
+	<% end -%>
+	
+		// Unhide the ones we need
+	switch(cat) {
+		<% for category in CATEGORIES.keys -%>
+				case "<%= category.to_s %>":
+				<% for type in CATEGORIES[category] -%>
+				<% unless type.downcase == "isbn" -%>
+				$("<%= type.downcase %>").show();
+				<% end -%>
+				<% end -%>
+				break;
+		<% end -%>
+		default:;
+	}
+
+	// hide the search types:  author, artist, etc.
+//	for (var index = 0, len = $$(".search_type_form").length; index < len; ++index){
+//		$$(".search_type_form")[index].hide();
+//	/*	for(var i=0, len2 = $$("."+cat)[0].childElements().length; i< len2; i++){
+//			$$("."+"Apparel")[0].childElements()[i].childElements()[1].value=null;
+//		}
+//		//$$("." + String(cat))[0].value = null;
+//	*/}
+////	$$("." + String(cat))[0].up().show()
+}
+document.observe('dom:loaded', function(){
+	<% for term in SEARCHTERMS -%>
+		<% unless term == "Keywords" -%>
+			$("<%= term.downcase %>").hide();
+			$("<%= term.downcase %>").descendants()[1].value = null;
+		<% end -%>
+	<% end -%>
+	$('category').value = "Blended";
+	$('asearch_submit').disabled = false;
+	$('category').observe('change', searchTypeSelected);
+});

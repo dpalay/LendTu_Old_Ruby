@@ -1,0 +1,42 @@
+<h1><%= @title %></h1>
+<div id="Items">
+	<div id="In_Line">
+		<h2>Things In My Queue</h2>
+		<%= render :partial => "pending_in" %>	
+	</div>
+	<div id = "Queued">
+		<h2>Items People Are Interested In</h2>
+		<%= render :partial => "items" %>
+	</div>
+	<div id="In_Trasit_Out">
+		<h2>Need to Deliver</h2>
+		<%= render :partial => "outgoing_items" %>
+	</div>
+	<div id="In_Transit_In">
+		<h2>Waiting to Get</h2>
+		<%= render :partial => "incoming_items" %>
+	</div>
+	<div id="Borrowed">
+		<h2>I'm Borrowing</h2>
+		<%= render :partial => "borrowed_items" %>
+	</div>
+	<div id="Lent">
+		<h2>I'm Lending</h2>
+		<%= render :partial => "lent_items" %>
+	</div>
+</div>
+<div id="Friendships">
+	<div id="Friends">
+		<h3>Your Friends</h3>
+		<%= render :partial => "friendships/friends"%>
+	</div>
+	<div id="Pending">
+		<h3>People you're waiting to hear back from</h3>
+		<%= render :partial => "friendships/pending_friends"%>
+	</div>
+	<div id="Requests">
+		<h3>People waiting to hear back from you</h3>
+		<%= render :partial => "friendships/requested_friends"%>
+	</div>
+	
+</div>

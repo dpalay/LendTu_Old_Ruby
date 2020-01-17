@@ -1,0 +1,25 @@
+<h1>Log In</h1>
+<% if flash[:warning] -%>
+<div id="warnings">
+	<%= flash[:warning] %>
+</div>
+<% end -%>
+<%if flash[:notice] -%>
+<div id="notice">
+	<%= flash[:notice] %>
+</div>
+<% end -%>
+<% form_tag session_path do -%>
+<p><%= label_tag 'login' %><br />
+<%= text_field_tag 'login', @login %></p>
+
+<p><%= label_tag 'password' %><br/>
+<%= password_field_tag 'password', nil %></p>
+
+
+<p><%= label_tag 'remember_me', 'Remember me' %>
+<%= check_box_tag 'remember_me', '1', @remember_me %></p>
+
+
+<p><%= submit_tag 'Log in' %><span id="sign_up_link">  Not a member?  Sign up <%= link_to "here", new_user_path %>.  </span></p>
+<% end -%>

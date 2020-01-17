@@ -1,0 +1,47 @@
+<%= link_to "Search Again", {:controller=> :asearch, :action => :search}%><br/>
+<% if @asearch.has_error? -%>
+	<%= @asearch.error%>
+<% else -%>
+<div id="Results">
+	<div id="Amazon">
+	<% unless @asearch.items.blank? -%>
+			<% for @item in @asearch.items -%>
+			<div class="item">
+				<table border="1" cellspacing="5" cellpadding="5" class="item_table">
+					<tr>
+						<td class="item_image">
+							<% if @item.get("mediumimage/url") -%>
+								<%= image_tag "#{@item.get("mediumimage/url")}"%>
+							<% else -%>
+								<p>No Image!</p>
+							<% end -%>
+						</td>
+						<td class="item_info">
+							<h4><%= @item.get("title") %></h4>
+							<p>
+								ASIN: <%= @item.get("asin")%>
+								<br	/>
+								Author: <%= @item.get("author")%>
+								<br />
+								Category: <%= @item.get("productgroup")%>
+							</p>
+						</td>
+						<td class="item_options">
+							<ul>
+							<li><%= link_to "Add this!", {:controller => :items, :action => :add, :listing_id => @asearch.items.index(@item)}, :method => :post%></li>
+							<!-- TODO: Find friends with this! -->
+							<%#link_to "Find friends with this!", {:controller => :asearch, :action => :search} %>
+							<li>Placeholder to Find Friends with this Item</li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+			</div>
+		<% end -%>
+	<% end -%>	
+	</div>
+	<div id="Other">
+		<p>Not seeing your item?	<%= link_to "Click here", :controller => :items, :action => :new	%> to create a new item!</p>
+	</div>
+</div>
+<% end -%>

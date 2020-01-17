@@ -1,0 +1,7 @@
+<% for friend in @user.requested_friends -%>
+<div class="friend_line">
+<%= link_to "#{friend.login}", :controller => "spec", :action => "show", :id => friend%>
+<%= link_to "Accept", :controller => :friendships, :action => :accept, :id => friend.login %>
+<%= link_to "Deny Request", :controller => :friendships, :action => :cancel, :id => friend.login %>
+</div>
+<% end -%>
